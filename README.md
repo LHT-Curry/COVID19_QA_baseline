@@ -7,4 +7,5 @@ DataFountain疫情问答助手keras-bert实现，单模0.67，比赛链接https:
 * 运行base.py，利用roberta-wwm-ext预训练模型，模型下载地址：https://github.com/ymcui/Chinese-BERT-wwm  
 * 多任务调和：分别预测出答案是否在该子文本中、答案开始的位置、答案结束的位置，五折交叉验证，计算每个子文本的得分，得分公式如下：  
 ![image](https://github.com/LHT-Curry/COVID19_QA_baseline/blob/master/score.png)  
+其中w1、w2分别设置为0.9、0.1（在验证集中分数最高）  
 * 选择分数最高的子文本，预测其答案，输出为submit.csv提交文件，模型权重保存至model_save文件夹，log文件夹为训练数据记录

@@ -273,5 +273,6 @@ test_new['score']=test_score
 tmp=test_new.groupby('id')['score'].idxmax()
 tmp=np.array(tmp)
 submit=test_new.loc[tmp,:]
+submit['answer']=submit.apply(lambda x:x['context'][x['start_pre']:x['end_pre']],axis=1)
 submit=submit[['id','docid','answer']]
-submit.to_csv('submitcsv',sep='\t',index=False)
+submit.to_csv('submit.csv',sep='\t',index=False)

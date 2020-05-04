@@ -40,7 +40,7 @@ MAX_LEN=512
 epoch=2
 EPSILON=1e-7
 w1=0.9
-w2=.01
+w2=0.1
 def seq_padding(X, padding=0):
     ML = MAX_LEN
     return np.array([

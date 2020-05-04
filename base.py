@@ -39,6 +39,8 @@ dict_path = 'chinese_roberta_wwm_large_ext_L-24_H-1024_A-16/vocab.txt'
 MAX_LEN=512
 epoch=2
 EPSILON=1e-7
+w1=0.9
+w2=.01
 def seq_padding(X, padding=0):
     ML = MAX_LEN
     return np.array([
@@ -235,7 +237,7 @@ for fold, (train_index, valid_index) in enumerate(skf.split(data,label)):
     model.load_weights('model_save/{}.w'.format(fold))
     
     Class,Start,End=prediction(val_data)
-    Start_loc,End_loc,Score,Answer_score=score(val_data,Start,End,Class,0.9,0.1)
+    Start_loc,End_loc,Score,Answer_score=score(val_data,Start,End,Class,w1,w2)
     test_Class,test_Start,test_End=prediction(test_data)
 
     train_start_loc[valid_index] = Start_loc

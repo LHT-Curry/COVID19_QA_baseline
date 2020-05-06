@@ -138,8 +138,8 @@ def get_model():
         l.trainable = True
     x1_in = Input(shape=(None,)) # 待识别句子输入
     x2_in = Input(shape=(None,)) # 待识别句子输入
-    s1_in = Input(shape=(None,)) # 实体左边界（标签）
-    s2_in = Input(shape=(None,)) # 实体右边界（标签）
+    s1_in = Input(shape=(None,)) # 答案开始位置（标签）
+    s2_in = Input(shape=(None,)) # 答案结束位置（标签）
 
     x1, x2, s1, s2= x1_in, x2_in, s1_in, s2_in
     x_mask = Lambda(lambda x: K.cast(K.greater(K.expand_dims(x, 2), 0), 'float32'))(x1)
